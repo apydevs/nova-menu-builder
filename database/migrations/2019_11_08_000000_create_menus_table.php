@@ -17,17 +17,17 @@ class CreateMenusTable extends Migration
         });
 
         Schema::create(MenuBuilder::getMenuItemsTableName(), function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('menu_id')->nullable();
+            $table->bigIncrements('id')->index();
+            $table->unsignedBigInteger('menu_id')->nullable()->index();
             $table->string('name');
-            $table->string('locale');
             $table->string('icon')->nullable();
-            $table->text('short_text')->nullable();
+            $table->string('short_text')->nullable();
+            $table->string('locale');
             $table->string('class')->nullable();
             $table->string('value')->nullable();
             $table->string('target')->default('_self');
             $table->json('data')->nullable();
-            $table->integer('parent_id')->nullable();
+            $table->integer('parent_id')->nullable()->index();
             $table->integer('order');
             $table->boolean('enabled')->default(1);
             $table->timestamps();
