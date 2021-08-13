@@ -21,6 +21,8 @@ class CreateMenusTable extends Migration
             $table->unsignedBigInteger('menu_id')->nullable();
             $table->string('name');
             $table->string('locale');
+            $table->string('icon')->nullable();
+            $table->text('short_text')->nullable();
             $table->string('class')->nullable();
             $table->string('value')->nullable();
             $table->string('target')->default('_self');
